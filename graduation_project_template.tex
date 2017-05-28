@@ -119,20 +119,18 @@
     \bfseries % Make all text bold in this environment
     \sffamily % Similarly select sans-serif font
 	\begin{center}
-		\LARGE{\textbf{ISTANBUL TECHNICAL UNIVERSITY \\ 
-               FACULTY OF COMPUTER AND INFORMATICS} } \\
+		\LARGE{\textbf{İSTANBUL TEKNİK ÜNİVERSİTESİ BİLGİSAYAR VE BİLİŞİM FAKÜLTESİ} } \\
 		\vspace{5.5cm}
-		\LARGE{PROJECT TITLE}  \\
+		\LARGE{Otomatik Transfer Fonksiyonu Oluşturucu Robotik Sistem}  \\
 		\vspace{4.5cm}
-		\Large{Graduation Project} \\
+		\Large{Bitirme Projesi} \\
         \vspace{0.5cm}
-		\Large{Besim Ongun Kanat} \\
-     	\Large{150120047} \\
+		\Large{Ali KADAM} \\
+     	\Large{040100005} \\
         \vspace{4cm}
-        \large{Department: Computer Engineering} \\
-        \large{Division: Computer Engineering} \\
+        \large{Bölüm: Bilgisayar Mühendisliği} \\
         \vspace{1.5cm}
-        \large{Advisor: Assoc. Prof. Dr. Sanem Sarıel} \\
+        \large{Danışman: Asst. Prof. Dr. Gökhan İNCE} \\
 		\vspace{\fill} % Fill out until the page end
 		\large{\normalfont \sffamily June 2017}
 	\end{center}
@@ -147,20 +145,27 @@
     bildiririm.
 \end{enumerate}
 \vspace{1em}
-İstanbul, TARİH
-\vspace{3em}\\Besim Ongun Kanat
+İstanbul, 05.06.2017
+\vspace{3em}\\Ali KADAM
 
 \newpage
-\section*{Acknowledgments}
-
-\newpage
-\section*{English Project Title}
-\centerline{\large\bfseries (Summary)}
+\section*{Önsöz}
+Bu projede belirli bir alanı tarayarak belirlenen noktalardan ses sinyalleri gönderip bu sinyalleri işleyerek her noktaya ait transfer fonksiyonun hesaplayan bir robotik sistem yapılmıştır. Bu çalışmada hem robotik bir sistem geliştirilmiş, hemde ses sinyallerini işleyerek transfer fonksiyonları oluşturmuştur. Bu iki konu da iş hayatında çalışmak istediğim alanları kapsadığı için bu projenin gelecek hayatımda bana çok büyük faydaları olacağını düşünüyorum.
 
 
 \newpage
-\section*{Türkçe Proje Başlığı}
+\section*{Otomatik Transfer Fonkisyonu Oluşturucu Robotik Sistem}
 \centerline{\large\bfseries (Özet)}
+Robotik sistemler insan hayatının her aşamasında karşımıza çıkmaktadır. Günümüzde daha önce insanlar tarafından yapılan birçok işlem artık robotlar tarafından yapılmaktadır. Aynı zamanda insanlar tarafından yapılması mümkün olmayan işlemlerde robotlar tarafından yapılabilmektedir. Bu sebeple robotik teknolojilerin gelişmesi, teknolojinin diğer dallarının gelişmesi açısından da oldukça önemlidir.
+Robot teknolojilerindeki en önemli gelişmelerden biride robotların dışarıdan gelen sinyalleri alıp işleyebilmesi olmuştur. Günümüzde robotlar gelen sesi yada görüntüyü işleyerek temel düzeyde görme, duyma gibi işlemleri gerçekleştirebilmektedir. Ama bu sinyaller her zaman mükemmel bir şeklide robota ulaşmayabilir. Örneğin aynı ses sinyali farklı noktalardan gönderildiğinde robotun algıladığı sinyal orijinal sinyalden farklı olacaktır. Aynı zamanda bütün noktalar içinde farklı olacaktır. Robotun düzgün bir şekilde sesi algılayabilmesi için bu farklılıkları anlayıp ona göre işlem yapması gerekmektedir.
+Gönderilen ses sinyali ile algılanan sinyal arasındaki bağıntı transfer fonksiyonu ile ifade edilebilir. Eğer robot bir ortamdaki bütün noktalara ait transfer fonksiyonunu bilirse, daha sonra gelen ses sinyallerini işlerken bu fonksiyonları kullanabilir. Bu projede bir ortama ait farklı noktaların transfer fonksiyonunun hesaplanması amaçlanmıştır.
+Bunun için iki düzlemde hareket imkanı sağlayan bir X-Y table tasarlanmıştır. Bu düzeneğe yerleştirilen bir speaker sayesinde sistemin daha önceden belirlenen noktalara giderek ses sinyali göndermesi sağlanmış ve gelen bu ses sinyalleri işlenerek her nokta için bir transfer fonksiyonu hesaplanmıştır. 
+
+\newpage
+\section*{Automatic Transfer Function Generator Robotic System}
+\centerline{\large\bfseries (Summary)}
+In this project, a robotic system has been developed to calculate transfer functions for points in a spesific area. This system has a XY table. This table carries a speaker to points we have decided before. Speaker plays a sound at each point. The system records this sounds and creates the transfer functions for all points. 
+
 
 \newpage
 \tableofcontents
@@ -168,12 +173,15 @@
 
 % For the ones who doesn't know: 1,2,..9 called West Arabic numbers
 \pagenumbering{arabic}
-\section{Introduction}
-In November 1936 Alan Turing published his groundbreaking paper which creates foundations of computer science \cite{turing1937computability}. It was the Big-Bang of the computer science that created a new universe from dusty works of his ancestors.
+\section{Giriş}
+Robotların gelen sesleri algılayıp işleyebilmesi oldukça önemli bir konudur. Ama aynı ses sinyali her zaman aynı şeklide gelmez. Bu sinyal sesin geldiği nokta, çevre etkenleri gibi sebeplerle farklılıklar gösterebilir. Robot her defasında bu sinyali düzgün bir şekilde anlayabilmeli ve bazı durumlarda sinyalin geldiği noktayı tespit edebilmelidir. Bu işlemler transfer fonksiyonları kullanılarak gerçekleştirilebilir.
+Kısaca tanımlamak gerekirse transfer fonksiyonu bir sistemin giriş ve çıkış bağıntıları arasındaki ilişkiyi tanımlayan fonksiyondur \cite {transfer function}. Bu fonksiyon aynı çevresel etkenler altında aynı değere sahip olacaktır. Bu şekilde bizim sistemimizdeki bir nokta için transfer fonksiyonunu belirlediğimiz zaman daha sonra bu noktadan gelen sinyali hem düzgün bir şekilde algılayabileceğiz, hem de sinyalin hangi noktadan geldiğini anlayabileceğiz.
+Bu konuda daha önce Honda ve Kyoto Üniversitesinin birlikte gerçekleştirdiği HARK projesi[2] önemli bir referans noktası oluşturmaktadır. Bu projede kurulmuş mikrofon sisteminin etrafında belirlenen noktalardan sırasıyla ses sinyalleri gönderilmiştir. Daha sonra bu sinyaller kullanılarak farklı yönler için transfer fonksiyonu bulunması sağlanmıştır [3].
+Bizim projemizdeki en büyük farklılık ise sistemin bilgisayar ortamında belirlenen noktalara kendisi giderek gerekli işlemeleri gerçeklemesidir. Sadece alanın ölçüleri ve ölçüm yapılmak istenilen noktalar arasındaki mesafe girilerek sistem çalıştırılabilir. Daha sonra sistem otomatik olarak hesapladığı noktalara giderek ses çalma ve kaydetme işlemlerini gerçekleştirecektir.
 \newpage
-\section{Project Description and Plan}
-This is the best graduation project ever. In Figure \ref{fig:ganttdiagram} you can see the Gantt diagram of the project.
-
+\section{Projenin Tanımı ve Planı}
+\subsection{Projenin Tanımı}
+Bu projemiz 3 ana kısımdan oluşmaktadır. Birinci kısım XY table dizaynı ve programlanmasıdır. Bu kısımda iki boyutta hareket imkanı sağlayan bir XY table tasarlanmış ve gerçeklenmiştir. XY table iki motor tarafından kontrol edilmektedir. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{gantt_diagram}
