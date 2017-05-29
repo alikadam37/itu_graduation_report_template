@@ -34,7 +34,7 @@
 % Use American English for dates etc.
 %\usepackage[american]{babel}
 % If document is in Turkish then use
-% \usepackage[turkish]{babel}
+\usepackage[turkish]{babel}
 % or for both
 % \usepackage[turkish,american]{babel}
 
@@ -181,17 +181,22 @@ Bizim projemizdeki en büyük farklılık ise sistemin bilgisayar ortamında bel
 \newpage
 \section{Projenin Tanımı ve Planı}
 \subsection{Projenin Tanımı}
-Bu projemiz 3 ana kısımdan oluşmaktadır. Birinci kısım XY table dizaynı ve programlanmasıdır. Bu kısımda iki boyutta hareket imkanı sağlayan bir XY table tasarlanmış ve gerçeklenmiştir. XY table iki motor tarafından kontrol edilmektedir. 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{gantt_diagram}
-    \caption{The Gantt diagram of the project}
-    \label{fig:ganttdiagram}
-\end{figure}
+Bu proje 3 ana kısımdan oluşmaktadır. Birinci kısım XY table dizaynı ve programlanmasıdır. Bu kısımda iki boyutta hareket imkanı sağlayan bir XY table tasarlanmış ve gerçeklenmiştir. XY table iki motor tarafından kontrol edilmektedir. Motorların farklı yönlerdeki hareketleriyle 4 faklı yönde hareket sağlanabilmektedir. Bu sistemde motorlar bir arduino kullanlırak kontrol edilmektedir.
+İkinci kısım ise sistemin bir arayüz kullanılarak kontrol edilmesidir. Bu aşamada C# dili kullanılmıştır. Arayüzümüz 3 farklı kısımdan oluşmaktadır. Birinci kısım kullanıcıdan çalışma alanı ve aralığını alarak bu verilerden bir Xml dosyası oluşturur. Bu dosya ikinci kısımda incelenerek sistemin nasıl hareket etmesi gerektiği belirlenir. C# kodumuz arduinoya hangi yönde ne kadar gitmesi gerektiği bilgisini gönderir. Arduino içine yüklemiş olduğumuz programımızda bu verileri kullanarak gerekli hareketi sağlar. Hareketi bitirdikten sonra C# tarafına hareketi bitirdiğine dair sinyal gönderir. Bu aşamadan sonra seçili olan ses dosyası çalınır ve aynı zamanda mikrofonlardan kayıt yapılır. Bu işlem tüm noktalar için gerçekleştirilir.
+Son aşamada ise kayıt edilmiş ses dosyaları ve orijinal ses dosyası karşılaştırılarak her noktaya ait transfer fonksiyonu hesaplanır. Bu karşılaştırma için ise matlab kullanılmıştır. Projeye ait detaylı anlatım  "Tasarım ve Gerçekleme" başlığı altında yapılmıştır. 
+
+\subsection{Projenin Planı}
+Proje 2 dönemde tamamlanmıştır. Tablo 1 de proje planı görülebilir. Ayrıca proje planının gann chartı da Figure 2 de görülebilir. 
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=\linewidth]{gantt_diagram}
+%    \caption{The Gantt diagram of the project}
+%    \label{fig:ganttdiagram}
+%\end{figure}
 
 \newpage
-\section{Background}
-A long long section with many papers.
+\section{Kurumsal Bilgiler}
+Arduino: Arduino günümüzde en çok kullanılan mikrokontrolörden birisidir. Hem fiyatının uygun olması hemde hertürlü kaynağa çok kolay bir şekilde ulaşılabilmesi Arduinoyu popüler yapan sebeplerdendir. Temel düzey programlama bilgisi ve donanımsal birkaç parça ile birlikte yapılabileceklerin neredeyse sınırı yoktur. Bu projemizde is XY table Arduino tarafından kontrol edilmektedir.
 
 \newpage
 \section{Analysis and Modeling}
